@@ -3,6 +3,9 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <iotream>
+
+using namespace std;
 
 int main(int argc, char *argv[]) {
   if (argc != 2) {
@@ -16,19 +19,26 @@ int main(int argc, char *argv[]) {
     exit(1);
   }
 
-  printf("Parent process: PID=%d, PPID=%d\n", getpid(), getppid());
+  cout<<("Parent process: PID=%d, PPID=%d\n", getpid(), getppid());
 
-  for (int i=1; i<=num_children; i++) {
+   // Declarar una variable para contar los hijos creados
+  int count = 1;
+
+  // Usar un bucle while en vez de un for
+  while (count <= num_children) {
       pid_t pid = fork();
       if (pid < 0) {
           fprintf(stderr, "Fork failed\n");
           exit(1);
       } else if (pid == 0) {
-          printf("Child #%d: PID=%d, PPID=%d\n", i, getpid(), getppid());
+          cout<<("Child #%d: PID=%d, PPID=%d\n", count, getpid(), getppid());
           exit(0);
       } else {
           wait(NULL);
       }
+
+      // Incrementar la variable en cada iteración
+      count++;
   }
 
   return 0;
