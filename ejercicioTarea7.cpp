@@ -19,7 +19,7 @@ int main(int argc, char *argv[]) {
     exit(1);
   }
 
-  fprintf<<("Proceso padre: PID=%d, PPID=%d\n", getpid(), getppid());
+  fprintf("Proceso padre: PID=%d, PPID=%d\n", getpid(), getppid());
 
   // Declarar una variable para contar los hijos creados
   int count = 1;
