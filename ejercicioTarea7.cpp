@@ -3,44 +3,35 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <iostream>
-
-using namespace std;
 
 int main(int argc, char *argv[]) {
   if (argc != 2) {
-    fprintf(stderr, "Uso: %s <num_children>\n", argv[0]);
+    fprintf(stderr, "Usage: %s <num_children>\n", argv[0]);
     exit(1);
   }
 
   int num_children = atoi(argv[1]);
   if (num_children <= 0) {
-    fprintf(stderr, "Error: Numero de hijos menor al minimo o 0\n");
+    fprintf(stderr, "Error: Invalid number of children\n");
     exit(1);
   }
 
-  fprintf("Proceso padre: PID=%d, PPID=%d\n", getpid(), getppid());
+  printf("Parent process: PID=%d, PPID=%d\n", getpid(), getppid());
 
-  // Declarar una variable para contar los hijos creados
-  int count = 1;
-
-  // Usar un bucle while en vez de un for
-  while (count <= num_children) {
+  for (int i=1; i<=num_children; i++) {
       pid_t pid = fork();
       if (pid < 0) {
           fprintf(stderr, "Fork failed\n");
           exit(1);
       } else if (pid == 0) {
-          cout<<("Child #%d: PID=%d, PPID=%d\n", count, getpid(), getppid());
+          printf("Child #%d: PID=%d, PPID=%d\n", i, getpid(), getppid());
           exit(0);
       } else {
           wait(NULL);
       }
-
-      // Incrementar la variable en cada iteración
-      count++;
   }
 
   return 0;
 }
+
 
