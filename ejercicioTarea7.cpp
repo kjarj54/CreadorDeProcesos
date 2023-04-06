@@ -10,8 +10,8 @@ int main(int argc, char *argv[]) {
     exit(1);
   }
 
-  int num_children = atoi(argv[1]);
-  if (num_children <= 0) {
+  int num_hijos = atoi(argv[1]);
+  if (num_hijos <= 0) {
     fprintf(stderr, "Error: Numero de hijos invalidos\n");
     exit(1);
   }
@@ -19,10 +19,10 @@ int main(int argc, char *argv[]) {
   printf("Proceso padre: PID=%d, PPID=%d\n", getpid(), getppid());
 
    // Declarar una variable para contar los hijos creados
-  int count = 1;
+  int cont = 1;
 
 
-  while (count <= num_children) {
+  while (cont <= num_hijos) {
       pid_t pid = fork();
       if (pid < 0) {
           fprintf(stderr, "Fork failed\n");
@@ -35,7 +35,7 @@ int main(int argc, char *argv[]) {
       }
 
       // Incrementar la variable en cada iteración
-      count++;
+      cont++;
   }
 
   return 0;
