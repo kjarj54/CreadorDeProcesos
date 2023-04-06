@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
           fprintf(stderr, "Fork failed\n");
           exit(1);
       } else if (pid == 0) {
-          printf("Hijos #%d: PID=%d, PPID=%d\n", count, getpid(), getppid());
+          printf("Hijos #%d: PID=%d, PPID=%d\n", cont, getpid(), getppid());
           exit(0);
       } else {
           wait(NULL);
