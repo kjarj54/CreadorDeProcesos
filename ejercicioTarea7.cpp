@@ -3,7 +3,7 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <iotream>
+#include <iostream>
 
 using namespace std;
 
