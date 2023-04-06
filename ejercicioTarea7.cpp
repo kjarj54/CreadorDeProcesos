@@ -9,13 +9,13 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
   if (argc != 2) {
-    fprintf<<(stderr, "Uso: %s <num_children>\n", argv[0]);
+    fprintf(stderr, "Uso: %s <num_children>\n", argv[0]);
     exit(1);
   }
 
   int num_children = atoi(argv[1]);
   if (num_children <= 0) {
-    fprintf<<(stderr, "Error: Numero de hijos menor al minimo o 0\n");
+    fprintf(stderr, "Error: Numero de hijos menor al minimo o 0\n");
     exit(1);
   }
 
@@ -28,7 +28,7 @@ int main(int argc, char *argv[]) {
   while (count <= num_children) {
       pid_t pid = fork();
       if (pid < 0) {
-          fprintf<<(stderr, "Fork failed\n");
+          fprintf(stderr, "Fork failed\n");
           exit(1);
       } else if (pid == 0) {
           cout<<("Child #%d: PID=%d, PPID=%d\n", count, getpid(), getppid());
