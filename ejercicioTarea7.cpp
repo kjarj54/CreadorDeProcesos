@@ -9,17 +9,17 @@ using namespace std;
 
 int main(int argc, char *argv[]) {
   if (argc != 2) {
-    cout<<(stderr, "Usage: %s <num_children>\n", argv[0]);
+    cout<<(stderr, "Uso: %s <num_children>\n", argv[0]);
     exit(1);
   }
 
   int num_children = atoi(argv[1]);
   if (num_children <= 0) {
-    cout<<(stderr, "Error: Invalid number of children\n");
+    cout<<(stderr, "Error: Numero de hijos menor al minimo o 0\n");
     exit(1);
   }
 
-  cout<<("Parent process: PID=%d, PPID=%d\n", getpid(), getppid());
+  cout<<("Proceso padre: PID=%d, PPID=%d\n", getpid(), getppid());
 
   // Declarar una variable para contar los hijos creados
   int count = 1;
