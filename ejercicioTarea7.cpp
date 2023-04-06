@@ -3,9 +3,6 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <sys/wait.h>
-#include <iostream>
-
-using namespace std;
 
 int main(int argc, char *argv[]) {
   if (argc != 2) {
@@ -19,7 +16,7 @@ int main(int argc, char *argv[]) {
     exit(1);
   }
 
-  cout<<("Parent process: PID=%d, PPID=%d\n", getpid(), getppid());
+  printf("Parent process: PID=%d, PPID=%d\n", getpid(), getppid());
 
    // Declarar una variable para contar los hijos creados
   int count = 1;
@@ -31,7 +28,7 @@ int main(int argc, char *argv[]) {
           fprintf(stderr, "Fork failed\n");
           exit(1);
       } else if (pid == 0) {
-          cout<<("Child #%d: PID=%d, PPID=%d\n", count, getpid(), getppid());
+          printf("Child #%d: PID=%d, PPID=%d\n", count, getpid(), getppid());
           exit(0);
       } else {
           wait(NULL);
